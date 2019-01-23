@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
  * @version 1.0
  * @date 2019/1/21 21:43
  * @className RocketMQTransactionProducerConfig
- * @desc RocketMQ事务消费者配置类
+ * @desc RocketMQ事务消息消费者配置类
  */
 public class RocketMQTransactionProducerConfig {
 
