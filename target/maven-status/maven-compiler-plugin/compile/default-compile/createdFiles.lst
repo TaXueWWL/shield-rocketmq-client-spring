@@ -1,6 +1,0 @@
-com\snowalker\shield\rocketmq\client\config\RocketMQConsumerConfig.class
-com\snowalker\shield\rocketmq\client\config\RocketMQTransactionProducerConfig.class
-com\snowalker\shield\rocketmq\client\RocketMQSimpleProducerAgent.class
-com\snowalker\shield\rocketmq\client\RocketMQPushConsumerAgent.class
-com\snowalker\shield\rocketmq\client\RocketMQTransactionProducerAgent.class
-com\snowalker\shield\rocketmq\client\config\RocketMQProducerConfig.class
