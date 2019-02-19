@@ -23,7 +23,7 @@ public class RocketMQSimpleProducerAgent {
 
     private DefaultMQProducer defaultMQProducer;
 
-    public RocketMQSimpleProducerAgent init(RocketMQProducerConfig producerConfig) throws Exception {
+    public RocketMQSimpleProducerAgent init(RocketMQProducerConfig producerConfig) {
         defaultMQProducer = new DefaultMQProducer(producerConfig.getProducerGroup());
         defaultMQProducer.setNamesrvAddr(producerConfig.getNameSrvAddr());
         LOGGER.debug("com.shield.job.message.rocketmq.RocketMQProducerAgent[初始化完成]");

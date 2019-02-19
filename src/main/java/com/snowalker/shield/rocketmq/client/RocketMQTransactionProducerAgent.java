@@ -27,7 +27,7 @@ public class RocketMQTransactionProducerAgent {
     private static final Logger LOGGER = LoggerFactory.getLogger(RocketMQTransactionProducerAgent.class);
 
     public RocketMQTransactionProducerAgent init(RocketMQTransactionProducerConfig transactionProducerConfig,
-                                                 TransactionListener transactionListener) throws Exception {
+                                                 TransactionListener transactionListener) {
         producer = new TransactionMQProducer(transactionProducerConfig.getProducerGroup());
         producer.setNamesrvAddr(transactionProducerConfig.getNameSrvAddr());
         // 设置本地事务执行线程池
