@@ -30,7 +30,6 @@ public class RocketMQSimpleProducerAgent {
         return this;
     }
 
-
     /**
      * 启动生产者服务
      */
