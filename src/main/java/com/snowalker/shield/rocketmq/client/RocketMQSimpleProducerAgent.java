@@ -32,7 +32,7 @@ public class RocketMQSimpleProducerAgent {
 
 
     /**
-     * 启动消费者服务
+     * 启动生产者服务
      */
     public void start() throws MQClientException {
         this.defaultMQProducer.start();

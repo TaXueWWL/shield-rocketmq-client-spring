@@ -33,6 +33,31 @@ public class RocketMQPushConsumerAgent {
      * @throws Exception
      */
     public RocketMQPushConsumerAgent init(RocketMQConsumerConfig consumerConfig, MessageListenerConcurrently messageListener)  throws MQClientException  {
+        buildDefaultMQPushConsumer(consumerConfig, messageListener);
+        defaultMQPushConsumer.subscribe(consumerConfig.getTopic(), "*");
+        LOGGER.debug("com.shield.job.message.rocketmq.RocketMQConsumerAgent消费者客户端组装完成");
+        return this;
+    }
+
+    /**
+     * 手动方式初始化，便于参数注入
+     * @param consumerConfig
+     * @param messageListener
+     * @param subExpression      子表达式，如："tag1 || tag2 || tag3" <br>
+     *                           null 或者 * 表示订阅所有
+     * @return
+     * @throws MQClientException
+     */
+    public RocketMQPushConsumerAgent init(RocketMQConsumerConfig consumerConfig,
+                                          MessageListenerConcurrently messageListener,
+                                          String subExpression)  throws MQClientException  {
+        buildDefaultMQPushConsumer(consumerConfig, messageListener);
+        defaultMQPushConsumer.subscribe(consumerConfig.getTopic(), subExpression);
+        LOGGER.debug("com.shield.job.message.rocketmq.RocketMQConsumerAgent消费者客户端组装完成");
+        return this;
+    }
+
+    private void buildDefaultMQPushConsumer(RocketMQConsumerConfig consumerConfig, MessageListenerConcurrently messageListener) {
         defaultMQPushConsumer = new DefaultMQPushConsumer(consumerConfig.getConsumerGroup());
         defaultMQPushConsumer.setNamesrvAddr(consumerConfig.getNameSrvAddr());
         defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
@@ -43,9 +68,6 @@ public class RocketMQPushConsumerAgent {
         // 注册监听器
         this.messageListener = messageListener;
         defaultMQPushConsumer.registerMessageListener(this.messageListener);
-        defaultMQPushConsumer.subscribe(consumerConfig.getTopic(), "*");
-        LOGGER.debug("com.shield.job.message.rocketmq.RocketMQConsumerAgent消费者客户端组装完成");
-        return this;
     }
 
     /**
